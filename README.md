@@ -1,4 +1,10 @@
-0x16. C - Simple Shell
+# 0x16. C - Simple Shell
+
+## Author
+
+> * Patrick Annang
+
+> * Eba Mengistu Baisa
 
 
 Resources
