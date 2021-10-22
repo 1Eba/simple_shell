@@ -9,6 +9,7 @@
 #include <string.h>
 #include <signal.h>
 #include <dirent.h>
+#include <limits.h>
 
 extern char **environ;
 
