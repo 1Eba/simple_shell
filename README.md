@@ -131,6 +131,6 @@ Bugs
 At this time, there are no known bugs.
 
 Authors
-Eba_Mengistu | GitHub | Twitter
+| 1Eba | Eba_mengistu
 
  | GitHub | Twitter
