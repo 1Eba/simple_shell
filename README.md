@@ -1,4 +1,5 @@
-simple_shell
+A simple UNIX command interpreter that provides a user interface to access and give orders to the operating system.
+
 Table of Contents
 Description
 File Structure
@@ -16,61 +17,17 @@ File Structure
 AUTHORS - List of contributors to this repository
 man_1_simple_shell - Manual page for the simple_shell
 shell.h - program header file
-coincidence.c -
-coincidence - looks for coincidence
-ext - free and exit buffer
-env - prints environ
-compare_path - compare PATH in environ
-str_concate - concates two strings
-free.c - function related to free
-freeAll - frees a buffer
-checks - writes to standar error
-exit.c - fuction related to exit
-sigintHandler - signal error
-free_env - frees the shell's environment
-getargs.c - funtion creates an array of pointers
-count - counts the buffer
-getargs - creates arrays of ponters with all the arguments
-get_env.c - enviromental variables related function
-get_env - gets an environ char
-get_pwd - creates a pointer of the path
-get_env1 - get a specific pointer from env
-_strtok.c - custom strtok
-_strtok - checks if a character matches in a string and breaks it into tokens
-getline1.c - functions related to get a line
-store_lineptr - aasigns the line
-getline1 - reads imput from a stream
-prompt.c - essential functions to the shell
-prompt - prints a prompt
-spaces.c - functions related to string manipulation
-spaces - compare size of string
-cpstring - duplicates a string
-cd_fun - cd function
-changepwd - change pwd and old pwd
-oldpwd - get oldpwd
 shell.c - main function of the shell
 main - the main function of the program
 ret - return function
 extstatus - return status
 writeexe - writes to standar error
 writes0 - writes to standar error
-calloc.c - allocates memory
-calloc - allocates memory and return a pointers
-realloc.c - reallocates memory
-calloc - reallocates memory and return a pointers
-strcpy.c - copies string to buffer
-strcpy - copies string to buffer
-aux.c - auxiliar functions to print
-strlen - returns the length of a string
-_puts - writes a string to standard output
-_puts2 - writes a string to standard erro
-unatoi - converts an unsigned int to a string
-writes3 - writes to estandar error
 Requirements
-simple_shell is designed to run in the Ubuntu 14.04 LTS linux environment and to be compiled using the GNU compiler collection v. gcc 4.8.4 with flags-Wall, -Werror, -Wextra, and -pedantic.
+simple_shell is designed to run in the Ubuntu 20.04 LTS linux environment and to be compiled using the GNU compiler collection v. gcc 4.8.4 with flags-Wall, -Werror, -Wextra, and -pedantic.
 
 Installation
-Clone this repository: git clone "https://github.com/1Eba/simple_shell.git"
+Clone this repository: git clone "https://github.com/Timex19/simple_shell.git"
 Change directories into the repository: cd simple_shell
 Compile: gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 Run the shell in interactive mode: ./hsh
@@ -91,7 +48,7 @@ Features
  handles && and ||
  aliases
  variable replacement
-Builtins
+Built-ins
  exit
  env
  setenv
@@ -99,38 +56,102 @@ Builtins
  cd
  help
  history
-Example of Use
-Run the executable in your terminal after compiling:
+Examples
+Absolute path commands
+non interactive
+$ echo "/bin/pwd" | ./hsh
+$ /home/timex/simple_shell
+interactive mode
+$ ./hsh
+./hsh$ /bin/echo hello world
+helo world
+./hsh$ exit
+$
+short command
+non interactive
+$ echo "pwd" | ./hsh
+$ /home/timex/simple_shell
+interactive mode
+$ ./hsh
+./hsh$ echo hello world
+helo world
+./hsh$ exit
+$
+built-ins
+non interactive
+$ echo "exit" | ./hsh
+$ echo $?
+0
+interactive mode
+$ ./hsh
+./hsh$ exit 98
+$ echo $?
+98
+Some error output
 
 $ ./hsh
-$ ls -la
-total 116
-drwxrwxr-x  3 vagrant vagrant  4096 Aug 25 20:21 .
-drwxr-xr-x 14 vagrant vagrant  4096 Aug 25 20:27 ..
-drwxrwxr-x  8 vagrant vagrant  4096 Aug 25 20:27 .git
--rw-rw-r--  1 vagrant vagrant   160 Aug 25 00:09 AUTHORS
--rw-rw-r--  1 vagrant vagrant  2828 Jul 31 01:52 README.md
--rw-rw-r--  1 vagrant vagrant   823 Aug 23 16:54 _strtok.c
--rw-rw-r--  1 vagrant vagrant  1967 Aug 24 16:46 coincidence.c
--rw-rw-r--  1 vagrant vagrant   216 Aug 23 16:54 concidence.c~
--rw-rw-r--  1 vagrant vagrant   241 Aug 23 16:54 exit.c
--rw-rw-r--  1 vagrant vagrant   189 Aug 23 16:54 free.c
--rw-rw-r--  1 vagrant vagrant   338 Aug 24 16:46 get_env.c
--rw-rw-r--  1 vagrant vagrant  1117 Aug 23 18:42 getargs.c
--rw-rw-r--  1 vagrant vagrant  1477 Aug 25 20:21 getline1.c
--rw-rw-r--  1 vagrant vagrant  1302 Aug 24 16:46 holberton.h
--rwxrwxr-x  1 vagrant vagrant 29371 Aug 24 16:56 hsh
--rw-rw-r--  1 vagrant vagrant  2271 Aug 25 02:52 man_1_simple_shell
--rw-rw-r--  1 vagrant vagrant   167 Aug 23 16:54 prompt.c
--rw-rw-r--  1 vagrant vagrant   789 Aug 23 18:47 realloc.c
--rw-rw-r--  1 vagrant vagrant   973 Aug 24 16:51 shell.c
--rw-rw-r--  1 vagrant vagrant   527 Aug 24 16:46 spaces.c
--rw-rw-r--  1 vagrant vagrant   270 Aug 23 18:48 strcpy.c
--rw-rw-r--  1 vagrant vagrant    46 Aug 23 16:54 test
+./hsh$ ls /non_existing_folder
+ls: cannot access '/non_existing_folder': No such file or directory
+./hsh$ exit
+$ echo $?
+2
+$ echo "non_valid_command" | ./hsh
+./hsh: 1: non_valid_command: not found
+$ echo $?
+127
+Project files
+File	Description
+AUTHORS	File with names of the owners and authors of this project
+README.md	Nutshell description of simple_shell project
+aux_funs.c	Auxiliar functions
+signal_exit: handler for SIGINT signals
+_calloc: allocate memory and fills it with zeros
+built-ins.c	Built-ins functions:
+check_word: evalute alpha chars in string
+exit_built_in: stop execution of shell
+env_built_in: prints environment variables
+core_funs.c	Heart of simple_shell
+check_builtin: check if first argument is a built-int
+not_found_error: handler for print error when command is not found
+simple_exec: decision flow for command execution
+path_funs.c	Function to check command in path
+_getenv: search variable in environment vars
+cmd_path: concat first argument with PATH dirs
+shell.h	Header file
+All includes
+All prototypes
+Definition of struct params
+simple_shell.c	Initialize the simple_shell execution:
+test:
+Remove \n last char readed with getline
+Tokenize and save in argv all arguments readed
+Calls simple_exec
+main:
+Initialize params struct vars
+Set signal listenes
+Print prompt (interactive mode)
+Read arguments with getline
+Handle CTRL + D to stop execution
+string_funs.c	First string functions file
+_strcat: concat string (no malloc)
+_strlen: get length of string
+rev_string: reverse a string
+_itoa: convert int to string
+_strcmp: compare two strings
+string_funs2.c	Second string functions file
+_strchr: search char in string
+_strcpy: copy string in other one
+str_concat: concat string (malloc)
+_atoi: convert string num, to int
+Full documentation
+For more info about this project you can run the man page:
+
+$ ./man_1_simple
+
 Bugs
 At this time, there are no known bugs.
 
 Authors
-| 1Eba | Eba_mengistu
+Eba Mengistu 1Eba
 
- | GitHub | Twitter
+Patrick Annang C-distin
