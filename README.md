@@ -1,4 +1,4 @@
-https://camo.githubusercontent.com/simple_shell
+simple_shell
 Table of Contents
 Description
 File Structure
