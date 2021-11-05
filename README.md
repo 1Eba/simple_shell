@@ -1,135 +1,136 @@
-0x16. C - Simple Shell
- Weight: 10
- Project to be done in teams of 2 people (your team: Patrick Annang, Eba Mengistu
- 
-Concepts
-For this project, students are expected to look at these concepts:
-
-Everything you need to know to start coding your own shell
-Approaching a Project
-Background Context
-Write a simple UNIX command interpreter.
-
-
-
-^ “The Gates of Shell”, by Spencer Cheng, featuring Julien Barbier
-
-Resources
-Read or watch:
-
-Unix shell
-Thompson shell
-Ken Thompson
-Everything you need to know to start coding your own shell concept page
-man or help:
-
-sh (Run sh as well)
-Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-
-General
-Who designed and implemented the original Unix operating system
-Who wrote the first version of the UNIX shell
-Who invented the B programming language (the direct predecessor to the C programming language)
-Who is Ken Thompson
-How does a shell work
-What is a pid and a ppid
-How to manipulate the environment of the current process
-What is the difference between a function and a system call
-How to create processes
-What are the three prototypes of main
-How does the shell use the PATH to find the programs
-How to execute another program with the execve system call
-How to suspend the execution of a process until one of its children terminates
-What is EOF / “end-of-file”?
+simple_shell
+Table of Contents
+Description
+File Structure
 Requirements
-General
-Allowed editors: vi, vim, emacs
-All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
-All your files should end with a new line
-A README.md file, at the root of the folder of the project is mandatory
-Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
-Your shell should not have any memory leaks
-No more than 5 functions per file
-All your header files should be include guarded
-Use system calls only when you need to (why?)
-GitHub
-*There should be one project repository per group. If you and your partner have a repository with the same name in both your accounts, you risk a 0% score. Add your partner as a collaborator. *
+Installation
+Usage
+Example of Use
+Bugs
+Authors
+Description
+This is a command line interpreter, or shell, in the tradition of the first Unix shell written by Ken Thompson in 1971. This was made as a project for Holberton School. In this project we apply the knowledge that we have learned in C programming language. Standard functions and system calls employed in simple_shell include:
 
-More Info
-Output
-Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
-The only difference is when you print an error, the name of the program must be equivalent to your argv[0] (See below)
-Example of error with sh:
+access, execve, exit, fork, free, malloc, read, signal, wait, write.
+File Structure
+AUTHORS - List of contributors to this repository
+man_1_simple_shell - Manual page for the simple_shell
+shell.h - program header file
+coincidence.c -
+coincidence - looks for coincidence
+ext - free and exit buffer
+env - prints environ
+compare_path - compare PATH in environ
+str_concate - concates two strings
+free.c - function related to free
+freeAll - frees a buffer
+checks - writes to standar error
+exit.c - fuction related to exit
+sigintHandler - signal error
+free_env - frees the shell's environment
+getargs.c - funtion creates an array of pointers
+count - counts the buffer
+getargs - creates arrays of ponters with all the arguments
+get_env.c - enviromental variables related function
+get_env - gets an environ char
+get_pwd - creates a pointer of the path
+get_env1 - get a specific pointer from env
+_strtok.c - custom strtok
+_strtok - checks if a character matches in a string and breaks it into tokens
+getline1.c - functions related to get a line
+store_lineptr - aasigns the line
+getline1 - reads imput from a stream
+prompt.c - essential functions to the shell
+prompt - prints a prompt
+spaces.c - functions related to string manipulation
+spaces - compare size of string
+cpstring - duplicates a string
+cd_fun - cd function
+changepwd - change pwd and old pwd
+oldpwd - get oldpwd
+shell.c - main function of the shell
+main - the main function of the program
+ret - return function
+extstatus - return status
+writeexe - writes to standar error
+writes0 - writes to standar error
+calloc.c - allocates memory
+calloc - allocates memory and return a pointers
+realloc.c - reallocates memory
+calloc - reallocates memory and return a pointers
+strcpy.c - copies string to buffer
+strcpy - copies string to buffer
+aux.c - auxiliar functions to print
+strlen - returns the length of a string
+_puts - writes a string to standard output
+_puts2 - writes a string to standard erro
+unatoi - converts an unsigned int to a string
+writes3 - writes to estandar error
+Requirements
+simple_shell is designed to run in the Ubuntu 14.04 LTS linux environment and to be compiled using the GNU compiler collection v. gcc 4.8.4 with flags-Wall, -Werror, -Wextra, and -pedantic.
 
-$ echo "qwerty" | /bin/sh
-/bin/sh: 1: qwerty: not found
-$ echo "qwerty" | /bin/../bin/sh
-/bin/../bin/sh: 1: qwerty: not found
-$
-Same error with your program hsh:
+Installation
+Clone this repository: git clone "https://github.com/1Eba/simple_shell.git"
+Change directories into the repository: cd simple_shell
+Compile: gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+Run the shell in interactive mode: ./hsh
+Or run the shell in non-interactive mode: example echo "pwd" | ./hsh
+Usage
+The simple_shell is designed to execute commands in a similar manner to sh, however with more limited functionality. The development of this shell is ongoing. The below features will be checked as they become available (see man page for complete information on usage):
 
-$ echo "qwerty" | ./hsh
-./hsh: 1: qwerty: not found
-$ echo "qwerty" | ./././hsh
-./././hsh: 1: qwerty: not found
-$
-
-List of allowed functions and system calls
-access (man 2 access)
-chdir (man 2 chdir)
-close (man 2 close)
-closedir (man 3 closedir)
-execve (man 2 execve)
-exit (man 3 exit)
-_exit (man 2 _exit)
-fflush (man 3 fflush)
-fork (man 2 fork)
-free (man 3 free)
-getcwd (man 3 getcwd)
-getline (man 3 getline)
-getpid (man 2 getpid)
-isatty (man 3 isatty)
-kill (man 2 kill)
-malloc (man 3 malloc)
-open (man 2 open)
-opendir (man 3 opendir)
-perror (man 3 perror)
-read (man 2 read)
-readdir (man 3 readdir)
-signal (man 2 signal)
-stat (__xstat) (man 2 stat)
-lstat (__lxstat) (man 2 lstat)
-fstat (__fxstat) (man 2 fstat)
-strtok (man 3 strtok)
-wait (man 2 wait)
-waitpid (man 2 waitpid)
-wait3 (man 2 wait3)
-wait4 (man 2 wait4)
-write (man 2 write)
-Compilation
-Your shell will be compiled this way:
-
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-Testing
-Your shell should work like this in interactive mode:
+Features
+ uses the PATH
+ implements builtins
+ handles command line arguments
+ custom strtok function
+ uses exit status
+ shell continues upon Crtl+C (^C)
+ handles comments (#)
+ handles ;
+ custom getline type function
+ handles && and ||
+ aliases
+ variable replacement
+Builtins
+ exit
+ env
+ setenv
+ unsetenv
+ cd
+ help
+ history
+Example of Use
+Run the executable in your terminal after compiling:
 
 $ ./hsh
-($) /bin/ls
-hsh main.c shell.c
-($)
-($) exit
-$
-But also in non-interactive mode:
+$ ls -la
+total 116
+drwxrwxr-x  3 vagrant vagrant  4096 Aug 25 20:21 .
+drwxr-xr-x 14 vagrant vagrant  4096 Aug 25 20:27 ..
+drwxrwxr-x  8 vagrant vagrant  4096 Aug 25 20:27 .git
+-rw-rw-r--  1 vagrant vagrant   160 Aug 25 00:09 AUTHORS
+-rw-rw-r--  1 vagrant vagrant  2828 Jul 31 01:52 README.md
+-rw-rw-r--  1 vagrant vagrant   823 Aug 23 16:54 _strtok.c
+-rw-rw-r--  1 vagrant vagrant  1967 Aug 24 16:46 coincidence.c
+-rw-rw-r--  1 vagrant vagrant   216 Aug 23 16:54 concidence.c~
+-rw-rw-r--  1 vagrant vagrant   241 Aug 23 16:54 exit.c
+-rw-rw-r--  1 vagrant vagrant   189 Aug 23 16:54 free.c
+-rw-rw-r--  1 vagrant vagrant   338 Aug 24 16:46 get_env.c
+-rw-rw-r--  1 vagrant vagrant  1117 Aug 23 18:42 getargs.c
+-rw-rw-r--  1 vagrant vagrant  1477 Aug 25 20:21 getline1.c
+-rw-rw-r--  1 vagrant vagrant  1302 Aug 24 16:46 holberton.h
+-rwxrwxr-x  1 vagrant vagrant 29371 Aug 24 16:56 hsh
+-rw-rw-r--  1 vagrant vagrant  2271 Aug 25 02:52 man_1_simple_shell
+-rw-rw-r--  1 vagrant vagrant   167 Aug 23 16:54 prompt.c
+-rw-rw-r--  1 vagrant vagrant   789 Aug 23 18:47 realloc.c
+-rw-rw-r--  1 vagrant vagrant   973 Aug 24 16:51 shell.c
+-rw-rw-r--  1 vagrant vagrant   527 Aug 24 16:46 spaces.c
+-rw-rw-r--  1 vagrant vagrant   270 Aug 23 18:48 strcpy.c
+-rw-rw-r--  1 vagrant vagrant    46 Aug 23 16:54 test
+Bugs
+At this time, there are no known bugs.
 
-$ echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
-$
-$ cat test_ls_2
-/bin/ls
-/bin/ls
-$
-$ cat test_ls_2 | ./hsh
-hsh main.c shell.c test_ls_2
-hsh main.c shell.c test_ls_2
-$
+Authors
+Eba Mengistu | GitHub | Twitter
+
+Patrick Annang | GitHub | Twitter
