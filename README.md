@@ -1,13 +1,13 @@
 ![68747470733a2f2f696d616765732e61737365747364656c69766572792e636f6d2f636f6d70696e67735f76322f646d73747564696f2f646d73747564696f313630362f646d73747564696f3136303630303033302e6a7067](https://user-images.githubusercontent.com/88311316/140586078-cb4544e4-9de9-48ae-8a8c-2944e470455b.jpg)simple_shell
-Table of Contents
-Description
-File Structure
-Requirements
-Installation
-Usage
-Example of Use
-Bugs
-Authors
+.Table of Contents
+.Description
+.File Structure
+.Requirements
+.Installation
+.Usage
+.Example of Use
+.Bugs
+.Authors
 Description
 This is a command line interpreter, or shell, in the tradition of the first Unix shell written by Ken Thompson in 1971. This was made as a project for Holberton School. In this project we apply the knowledge that we have learned in C programming language. Standard functions and system calls employed in simple_shell include:
 
