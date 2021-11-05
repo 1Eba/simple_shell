@@ -1,4 +1,4 @@
-![2](https://user-images.githubusercontent.com/88311316/140585954-1c81f297-eb68-4446-bd63-177fe85a7e3a.jpg)
+
 simple_shell
 Table of Contents
 Description
